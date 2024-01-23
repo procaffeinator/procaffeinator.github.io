@@ -9,19 +9,23 @@ h1 {
 }
 
 label {
-    display: block;
+    display: inline-block;
+    /* Display labels in-line */
     margin-top: 10px;
 }
 
 select {
-    width: 100%;
+    width: 30%;
+    /* Adjust the width as needed */
     padding: 5px;
-    margin: 5px 0;
+    margin: 5px 10px;
+    /* Add margin for spacing */
 }
 
 button {
     display: block;
-    margin: 10px 0;
+    margin: 10px auto;
+    /* Center the button */
     padding: 10px;
     background-color: #007BFF;
     color: #fff;
@@ -31,10 +35,14 @@ button {
 
 #result {
     margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    /* Allow items to wrap to the next line */
 }
 
 img {
-    max-width: 100%;
+    max-width: 30%;
     height: auto;
     margin-top: 10px;
 }
