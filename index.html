@@ -11,24 +11,25 @@
 
 <body>
     <div class="container">
-        <h1 class="center">Idea Generator</h1>
+        <h1 class="center">Product Tagline Generator</h1>
 
         <div class="label-container">
-            <label for="category1">Category 1:</label>
+            <label for="category1">Product Type:</label>
             <select id="category1"></select>
 
-            <label for="category2">Category 2:</label>
+            <label for="category2">Product Feature:</label>
             <select id="category2"></select>
 
-            <label for="category3">Category 3:</label>
+            <label for="category3">User Benefit</label>
             <select id="category3"></select>
         </div>
 
         <div class="button-container">
-            <button type="button" onclick="generateIdea()" class="generate-button">Generate Idea</button>
+            <button type="button" onclick="generateIdea()" class="generate-button">Generate Tagline</button>
         </div>
     </div>
 
+    <div id="loader" class="loader"></div>
     <div class="result-container">
         <div id="result"></div>
     </div>

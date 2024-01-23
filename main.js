@@ -1,7 +1,7 @@
 // Dummy data for categories (replace with actual data)
-const category1Options = ['Word1', 'Word2', 'Word3', 'Word4', 'Word5', 'Word6', 'Word7', 'Word8', 'Word9', 'Word10'];
-const category2Options = ['Phrase1', 'Phrase2', 'Phrase3', 'Phrase4', 'Phrase5', 'Phrase6', 'Phrase7', 'Phrase8', 'Phrase9', 'Phrase10'];
-const category3Options = ['Idea1', 'Idea2', 'Idea3', 'Idea4', 'Idea5', 'Idea6', 'Idea7', 'Idea8', 'Idea9', 'Idea10'];
+const category1Options = ['Smartphone', 'Wearable', 'Smart Home Device', 'Drone', 'laptop', 'Augmented Reality Glasses', 'Smartwatch', 'Security Camera', 'Virtual Assistant', 'Gaming Console'];
+const category2Options = ['Smart', 'Autonomous', 'Innovative', 'Seamless', 'Futuristic', 'Adaptive', 'Intelligent', 'Secure', 'Connected', 'Advanced'];
+const category3Options = ['Empowering', 'Efficient', 'Transformative', 'Productive', 'Personalized', 'Time-saving', 'Revolutionary', 'User-friendly', 'Streamlined', 'Life-enhancing'];
 
 // Function to populate dropdown options
 function populateOptions(category, options) {
@@ -13,68 +13,102 @@ function populateOptions(category, options) {
     });
 }
 
-// Function to generate the idea and display result
-// ... (your existing code)
+async function generateIdea() {
+    const loader = document.getElementById('loader');
+    loader.style.display = 'block';
 
-// Function to generate the idea and display result
-function generateIdea() {
-    const selectedWords = [
-        document.getElementById('category1').value,
-        document.getElementById('category2').value,
-        document.getElementById('category3').value
-    ];
-
-    // Display the selected words
-    const resultDiv = document.getElementById('result');
     const resultContainerDiv = document.querySelector('.result-container');
+    resultContainerDiv.style.display = 'none';
 
-    const generatedIdea = `<p class="generated-idea fade-in">Generated Idea: ${selectedWords.join(' ')}</p>`;
+    try {
+        const category1 = document.getElementById('category1').value;
+        const category2 = document.getElementById('category2').value;
+        const category3 = document.getElementById('category3').value;
 
-    // Create a container div for the copy button and generated text
-    const copyContainer = document.createElement('div');
-    copyContainer.classList.add('copy-container');
+        const requestBody = {
+            contents: [{
+                parts: [{
+                    text: `Generate a novel tech product catchline using the following choices:
+                    1. Product Type: ${category1}
+                    2. Product Feature: ${category2}
+                    3. User Benefit: ${category3}
+                    
+                    Tagline:
+                    `
+                }]
+            }]
+        };
 
-    // Add "Copy to Clipboard" button with Font Awesome icon
-    const copyButton = document.createElement('button');
-    copyButton.innerHTML = '<i class="fas fa-copy"></i>';
-    copyButton.addEventListener('click', function () {
-        copyToClipboard(selectedWords.join(' '));
-    });
-    copyButton.classList.add('fade-in');
+        // Make a request to the Gemini Pro API
+        const response = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyC78jtwaS96MJJc2In7e_iaIrfj1sxhgV4', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(requestBody)
+        });
 
-    // Append the generated text to the container
-    copyContainer.innerHTML += generatedIdea;
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
 
-    // Append the button to the container
-    copyContainer.appendChild(copyButton);
+        // Parse the JSON response
+        const data = await response.json();
 
-    // Append the copy container to the result div
-    resultDiv.innerHTML = ''; // Clear previous content
-    resultDiv.appendChild(copyContainer);
+        // Hide the loader and show the result container
+        loader.style.display = 'none';
+        resultContainerDiv.style.display = 'flex';
 
-    // You can load images corresponding to the selected words here (replace with actual image URLs)
-    const imageUrls = ['assets/download.jpeg', 'assets/download.jpeg', 'assets/download.jpeg'];
+        // Display the generated idea
+        const resultDiv = document.getElementById('result');
+        resultDiv.innerHTML = ''; // Clear previous content
 
-    // Create a container div for the images
-    const imageContainer = document.createElement('div');
-    imageContainer.classList.add('image-container');
+        const generatedIdea = `<p class="generated-idea fade-in">${data.candidates[0].content.parts[0].text}</p>`;
 
-    imageUrls.forEach(url => {
-        // Create the image element
-        const imgElement = document.createElement('img');
-        imgElement.src = url;
-        imgElement.classList.add('fade-in');
+        // Create a container div for the copy button and generated text
+        const copyContainer = document.createElement('div');
+        copyContainer.classList.add('copy-container');
 
-        // Append the image to the container
-        imageContainer.appendChild(imgElement);
-    });
+        // Add "Copy to Clipboard" button with Font Awesome icon
+        const copyButton = document.createElement('button');
+        copyButton.innerHTML = '<i class="fas fa-copy"></i>';
+        copyButton.addEventListener('click', function () {
+            copyToClipboard(data.candidates[0].content.parts[0].text);
+        });
+        copyButton.classList.add('fade-in');
+        // Append the generated text to the container
+        copyContainer.innerHTML += generatedIdea;
 
-    resultDiv.appendChild(imageContainer);
-    resultContainerDiv.style.display = 'flex';
+        // Append the button to the container
+        copyContainer.appendChild(copyButton);
+
+        // Append the copy container to the result div
+        resultDiv.appendChild(copyContainer);
+
+        const imageUrls = ['assets/download.jpeg', 'assets/download.jpeg', 'assets/download.jpeg'];
+
+        // Create a container div for the images
+        const imageContainer = document.createElement('div');
+        imageContainer.classList.add('image-container');
+
+        imageUrls.forEach(url => {
+            // Create the image element
+            const imgElement = document.createElement('img');
+            imgElement.src = url;
+            imgElement.classList.add('fade-in');
+
+            // Append the image to the container
+            imageContainer.appendChild(imgElement);
+        });
+
+        resultDiv.appendChild(imageContainer);
+    } catch (error) {
+        console.error('Error during API request:', error);
+        // Hide the loader and show the result container
+        loader.style.display = 'none';
+        resultContainerDiv.style.display = 'flex';
+    }
 }
-
-// ... (your existing code)
-
 
 function copyToClipboard(text) {
     const textarea = document.createElement('textarea');
