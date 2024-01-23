@@ -23,15 +23,28 @@ function generateIdea() {
 
     // Display the selected words
     const resultDiv = document.getElementById('result');
-    resultDiv.innerHTML = `<p>Generated Idea: ${selectedWords.join(' ')}</p>`;
+    const resultContainerDiv = document.querySelector('.result-container');
+    resultDiv.innerHTML = `<p class="generated-idea">Generated Idea: ${selectedWords.join(' ')}</p>`;
 
     // You can load images corresponding to the selected words here (replace with actual image URLs)
     const imageUrls = ['assets/download.jpeg', 'assets/download.jpeg', 'assets/download.jpeg'];
+
+    // Create a container div for the images
+    const imageContainer = document.createElement('div');
+    imageContainer.classList.add('image-container');
+
     imageUrls.forEach(url => {
+        // Create the image element
         const imgElement = document.createElement('img');
         imgElement.src = url;
-        resultDiv.appendChild(imgElement);
+
+        // Append the image to the container
+        imageContainer.appendChild(imgElement);
     });
+
+    // Append the image container to the result div
+    resultDiv.appendChild(imageContainer);
+    resultContainerDiv.style.display = 'flex';
 }
 
 // Populate options on page load

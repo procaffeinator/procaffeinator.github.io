@@ -5,26 +5,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Idea Generator</title>
-    <link rel="stylesheet" href="style.css"> <!-- Add your CSS file here -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1>Idea Generator</h1>
+    <div class="container">
+        <h1 class="center">Idea Generator</h1>
 
-    <label for="category1">Category 1:</label>
-    <select id="category1"></select>
+        <div class="label-container">
+            <label for="category1">Category 1:</label>
+            <select id="category1"></select>
 
-    <label for="category2">Category 2:</label>
-    <select id="category2"></select>
+            <label for="category2">Category 2:</label>
+            <select id="category2"></select>
 
-    <label for="category3">Category 3:</label>
-    <select id="category3"></select>
+            <label for="category3">Category 3:</label>
+            <select id="category3"></select>
+        </div>
 
-    <button onclick="generateIdea()">Generate Idea</button>
+        <div class="button-container">
+            <button type="button" onclick="generateIdea()" class="generate-button">Generate Idea</button>
+        </div>
+    </div>
 
-    <div id="result"></div>
+    <div class="result-container">
+        <div id="result"></div>
+    </div>
 
-    <script src="main.js"></script> <!-- Link to the external JavaScript file -->
+    <script src="main.js"></script>
 </body>
 
 </html>
