@@ -1,24 +1,29 @@
 body {
-    font-family: 'Georgia', sans-serif;
+    font-family: 'Space Mono', sans-serif;
     margin: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #66b1e0;
-
+    background-color: rgb(50, 50, 118);
 }
 
 h1 {
-    font-size: 48px;
-    font-weight: bold;
+    text-decoration: none;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: thin PaleTurquoise;
+    font-size: 42px;
+}
+
+h1:hover {
+    -webkit-text-fill-color: PaleTurquoise;
 }
 
 .container {
     width: 80%;
     margin: 20px auto;
-    background-color: #84bde0;
+    background-color: midnightblue;
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 12px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -39,6 +44,7 @@ label {
     margin-right: 5px;
     margin-left: 5px;
     font-weight: 200;
+    color: PaleTurquoise;
     /* Add space to the right of each label */
 }
 
@@ -53,11 +59,11 @@ select {
     /* Add margin to the right of each dropdown */
     appearance: none;
     /* Remove default arrow */
-    background-color: #ffffffce;
+    background-color: #ffffffb5;
     cursor: pointer;
     transition: background-color 0.3s ease, border-color 0.3s ease;
     font-size: 16px;
-    color: #0f0f0f;
+    color: midnightblue;
 }
 
 /* Style the dropdown when hovered */
@@ -81,23 +87,17 @@ select:focus {
 .generate-button {
     display: inline-block;
     padding: 12px;
-    background-color: #5196b0;
-    color: #fff;
+    background-color: #3f3f3fb5;
+    color: paleturquoise;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-.generated-idea {
-    font-size: 24px;
-    font-family: Georgia, sans-serif;
-    /* Set your desired font size */
-    /* Add any additional styling for the generated idea */
-}
 
 .generate-button:hover {
-    background-color: #487db5;
+    background-color: #807e7eb5;
 }
 
 /* ... (your existing styles) */
@@ -109,10 +109,12 @@ select:focus {
     margin-top: 20px;
     text-align: center;
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 12px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #84bde0;
+    background-color: midnightblue;
     overflow: hidden;
+    color: paleturquoise;
+    width: 80%;
 }
 
 .fade-in {
@@ -133,6 +135,7 @@ select:focus {
     display: flex;
     align-items: center;
     justify-content: center;
+
     /* Center the content horizontally */
 }
 
@@ -145,6 +148,7 @@ select:focus {
     border-radius: 4px;
     cursor: pointer;
     animation: fadeIn 2s ease-in-out forwards;
+    background-color: #ffffffb5;
 }
 
 .loader {
