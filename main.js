@@ -1,4 +1,4 @@
-const CONFIG_URL = 'https://raw.githubusercontent.com/procaffeinator/configs/main/api_keys.json';
+const CONFIG_URL = 'https://raw.githubusercontent.com/procaffeinator/configs/main/api_keys.json?token=GHSAT0AAAAAACMCUE7EAMODQPFN2EM2WGPMZNQKZWQ';
 var GEMINI_PRO_API_KEY = ""
 async function fetchConfig() {
     try {
