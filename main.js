@@ -2,7 +2,7 @@ var GEMINI_PRO_API_KEY = "AIzaSyC78jtwaS96MJJc2In7e_iaIrfj1sxhgV4"
 
 // Dummy data for categories (replace with actual data)
 const category1Options = ['Smartphone', 'Wearable', 'Smart Home Device', 'Drone', 'Laptop', 'Augmented Reality Glasses', 'Smartwatch', 'Security Camera', 'Tablet', 'Gaming Console'];
-const category2Options = ['Smart', 'Autonomous', 'Innovative', 'Seamless', 'Futuristic', 'Adaptive', 'Intelligent', 'Secure', 'Connected', 'Advanced'];
+const category2Options = ['Innovative', 'Autonomous', 'Smart', 'Seamless', 'Futuristic', 'Adaptive', 'Intelligent', 'Secure', 'Connected', 'Advanced'];
 const category3Options = ['Empowering', 'Efficient', 'Transformative', 'Productive', 'Personalized', 'Time-saving', 'Revolutionary', 'User-friendly', 'Streamlined', 'Life-enhancing'];
 
 // Function to populate dropdown options
@@ -88,7 +88,7 @@ async function generateIdea() {
         // Append the copy container to the result div
         resultDiv.appendChild(copyContainer);
 
-        const imageUrls = [`assets/category1/${category1}.jpg`, `assets/category2/${category2}.jpeg`, 'assets/download.jpeg'];
+        const imageUrls = [`assets/category1/${category1}.jpeg`, `assets/category2/${category2}.jpeg`, `assets/category3/${category3}.jpeg`];
 
         // Create a container div for the images
         const imageContainer = document.createElement('div');
