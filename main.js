@@ -1,7 +1,35 @@
+const CONFIG_URL = 'https://raw.githubusercontent.com/procaffeinator/configs/main/api_keys.json';
+var GEMINI_PRO_API_KEY = ""
+async function fetchConfig() {
+    try {
+        const response = await fetch(CONFIG_URL);
+        const config = await response.json();
+        return config;
+    } catch (error) {
+        console.error(error);
+        return null;
+    }
+}
+
+async function initializeApp() {
+    const config = await fetchConfig();
+    if (config) {
+        // Use config.api_key in your application
+        GEMINI_PRO_API_KEY = config.gemini_pro_api_key;
+    } else {
+        console.error('Failed to fetch configuration');
+    }
+}
+
+initializeApp();
+
+
 // Dummy data for categories (replace with actual data)
 const category1Options = ['Smartphone', 'Wearable', 'Smart Home Device', 'Drone', 'laptop', 'Augmented Reality Glasses', 'Smartwatch', 'Security Camera', 'Virtual Assistant', 'Gaming Console'];
 const category2Options = ['Smart', 'Autonomous', 'Innovative', 'Seamless', 'Futuristic', 'Adaptive', 'Intelligent', 'Secure', 'Connected', 'Advanced'];
 const category3Options = ['Empowering', 'Efficient', 'Transformative', 'Productive', 'Personalized', 'Time-saving', 'Revolutionary', 'User-friendly', 'Streamlined', 'Life-enhancing'];
+
+
 
 // Function to populate dropdown options
 function populateOptions(category, options) {
@@ -40,7 +68,8 @@ async function generateIdea() {
         };
 
         // Make a request to the Gemini Pro API
-        const response = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyC78jtwaS96MJJc2In7e_iaIrfj1sxhgV4', {
+        const api_end_pt = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_PRO_API_KEY}`
+        const response = await fetch(api_end_pt, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

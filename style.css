@@ -47,6 +47,7 @@ select {
     border: 1px solid #ddd;
     border-radius: 4px;
     margin-right: 10px;
+    /* margin-left: 10px; */
     /* Add margin to the right of each dropdown */
     appearance: none;
     /* Remove default arrow */
