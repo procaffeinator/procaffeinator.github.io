@@ -9,7 +9,8 @@ body {
 }
 
 h1 {
-    font-size: 36px;
+    font-size: 48px;
+    font-weight: bold;
 }
 
 .container {
@@ -35,30 +36,28 @@ label {
     display: inline-block;
     margin-top: 15px;
     width: 30%;
-    margin-right: 10px;
-    margin-left: 10px;
+    margin-right: 5px;
+    margin-left: 5px;
+    font-weight: 200;
     /* Add space to the right of each label */
 }
 
 select {
     width: 60%;
-    padding: 8px;
+    padding: 6px;
     margin: 8px 0;
     border: 1px solid #ddd;
     border-radius: 4px;
-    margin-right: 10px;
+    margin-right: 5px;
     /* margin-left: 10px; */
     /* Add margin to the right of each dropdown */
     appearance: none;
     /* Remove default arrow */
     background-color: #fff;
-    /* Dropdown background color */
     cursor: pointer;
     transition: background-color 0.3s ease, border-color 0.3s ease;
-
-    /* Cute styling */
     font-size: 16px;
-    color: #333;
+    color: #0f0f0f;
 }
 
 /* Style the dropdown when hovered */
@@ -88,6 +87,13 @@ select:focus {
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+}
+
+.generated-idea {
+    font-size: 24px;
+    font-family: Georgia, sans-serif;
+    /* Set your desired font size */
+    /* Add any additional styling for the generated idea */
 }
 
 .generate-button:hover {
@@ -173,9 +179,12 @@ button i.fas {
 }
 
 img {
-    max-width: 30%;
-    height: auto;
-    margin: 10px;
+    width: auto;
+    /* Set a fixed width */
+    height: 350px;
+    /* Set a fixed height */
+    margin: 10px auto;
+    /* Center the image horizontally */
     border-radius: 4px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     opacity: 0;
