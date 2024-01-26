@@ -1,2 +1,1 @@
-[UNDER CONSTRUCTION]
-This is the README for Kriti's personal website.
+Tool to generate taglines for tech products.
