@@ -1,11 +1,9 @@
 var GEMINI_PRO_API_KEY = "AIzaSyC78jtwaS96MJJc2In7e_iaIrfj1sxhgV4"
 
-// Dummy data for categories (replace with actual data)
 const category1Options = ['Smartphone', 'Wearable', 'Smart Home Device', 'Drone', 'Laptop', 'Augmented Reality Glasses', 'Smartwatch', 'Security Camera', 'Tablet', 'Gaming Console'];
 const category2Options = ['Innovative', 'Autonomous', 'Smart', 'Seamless', 'Futuristic', 'Adaptive', 'Intelligent', 'Secure', 'Connected', 'Advanced'];
 const category3Options = ['Empowering', 'Efficient', 'Transformative', 'Productive', 'Personalized', 'Time-saving', 'Revolutionary', 'User-friendly', 'Streamlined', 'Life-enhancing'];
 
-// Function to populate dropdown options
 function populateOptions(category, options) {
     const selectElement = document.getElementById(category);
     options.forEach(option => {
@@ -30,8 +28,6 @@ async function generateIdea() {
 
     try {
         const category1 = document.getElementById('category1').value;
-        // const category2 = document.getElementById('category2').value;
-        // const category3 = document.getElementById('category3').value;
         let category2 = category2Options[getRandomInt(0, category2Options.length - 1)]
         let category3 = category3Options[getRandomInt(0, category3Options.length - 1)]
 
@@ -49,7 +45,6 @@ async function generateIdea() {
             }]
         };
 
-        // Make a request to the Gemini Pro API
         const api_end_pt = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_PRO_API_KEY}`
         const response = await fetch(api_end_pt, {
             method: 'POST',
@@ -63,59 +58,47 @@ async function generateIdea() {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
 
-        // Parse the JSON response
         const data = await response.json();
 
-        // Hide the loader and show the result container
         loader.style.display = 'none';
         resultContainerDiv.style.display = 'flex';
 
-        // Display the generated idea
         const resultDiv = document.getElementById('result');
-        resultDiv.innerHTML = ''; // Clear previous content
+        resultDiv.innerHTML = '';
 
         const generatedIdea = `<p class="generated-idea fade-in">${data.candidates[0].content.parts[0].text}</p>`;
 
-        // Create a container div for the copy button and generated text
         const copyContainer = document.createElement('div');
         copyContainer.classList.add('copy-container');
 
-        // Add "Copy to Clipboard" button with Font Awesome icon
         const copyButton = document.createElement('button');
         copyButton.innerHTML = '<i class="fas fa-copy"></i>';
         copyButton.addEventListener('click', function () {
             copyToClipboard(data.candidates[0].content.parts[0].text);
         });
         copyButton.classList.add('fade-in');
-        // Append the generated text to the container
         copyContainer.innerHTML += generatedIdea;
 
-        // Append the button to the container
         copyContainer.appendChild(copyButton);
 
-        // Append the copy container to the result div
         resultDiv.appendChild(copyContainer);
 
         const imageUrls = [`assets/category1/${category1}.jpeg`, `assets/category2/${category2}.jpeg`, `assets/category3/${category3}.jpeg`];
 
-        // Create a container div for the images
         const imageContainer = document.createElement('div');
         imageContainer.classList.add('image-container');
 
         imageUrls.forEach(url => {
-            // Create the image element
             const imgElement = document.createElement('img');
             imgElement.src = url;
             imgElement.classList.add('fade-in');
 
-            // Append the image to the container
             imageContainer.appendChild(imgElement);
         });
 
         resultDiv.appendChild(imageContainer);
     } catch (error) {
         console.error('Error during API request:', error);
-        // Hide the loader and show the result container
         loader.style.display = 'none';
         resultContainerDiv.style.display = 'flex';
     }
@@ -129,9 +112,6 @@ function copyToClipboard(text) {
     document.execCommand('copy');
     document.body.removeChild(textarea);
 }
-// Populate options on page load
 window.onload = function () {
     populateOptions('category1', category1Options);
-    // populateOptions('category2', category2Options);
-    // populateOptions('category3', category3Options);
 };

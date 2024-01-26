@@ -36,7 +36,6 @@ h1:hover {
 label {
     display: inline-block;
     margin-top: 10px;
-    /* width: 100%; */
     margin-right: 5px;
     margin-left: 5px;
     margin-bottom: 10px;
@@ -59,30 +58,11 @@ label {
     margin: 10px 0;
 }
 
-/* 
-.arrow-container {
-    display: block;
-    text-align: center;
-    margin: 20px auto;
-}
-
-.arrow {
-    width: 0;
-    height: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-top: 15px solid PaleTurquoise;
-    margin: 0 auto;
-} */
-
 select {
     width: 100%;
-    /* Increased width to 70% */
     padding: 8px;
-    /* Adjusted padding for better spacing */
     margin: 8px 0;
     border: 1px solid #333;
-    /* Dark navy blue border color */
     border-radius: 4px;
     margin-right: 5px;
     margin-bottom: 10px;
@@ -92,21 +72,15 @@ select {
     transition: background-color 0.3s ease, border-color 0.3s ease;
     font-size: 16px;
     color: black;
-    /* Dark navy blue text color */
 }
 
-/* Style the dropdown when hovered */
 select:hover {
     border-color: #383838;
-    /* Highlight border color on hover */
 }
 
-/* Style the dropdown when active (clicked) */
 select:focus {
     border-color: #383838;
-    /* Highlight border color when active */
 }
-
 
 .button-container {
     text-align: center;
@@ -116,17 +90,13 @@ select:focus {
 .generate-button {
     display: inline-block;
     padding: 14px;
-    /* Increased padding for better visual appearance */
     background-color: #333;
-    /* Updated button color */
     color: #fff;
-    /* Updated text color */
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
     font-size: 18px;
-    /* Increased font size */
 }
 
 .generate-button:hover {
@@ -166,13 +136,10 @@ select:focus {
     display: flex;
     align-items: center;
     justify-content: center;
-
-    /* Center the content horizontally */
 }
 
 .copy-container button {
     margin-left: 10px;
-    /* Adjust the top margin to increase space */
     padding: 5px;
     opacity: 0;
     border: none;
@@ -215,11 +182,8 @@ button i.fas {
 
 img {
     width: auto;
-    /* Set a fixed width */
     height: 350px;
-    /* Set a fixed height */
     margin: 20px 10px;
-    /* Center the image horizontally */
     border-radius: 12px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     opacity: 0;
