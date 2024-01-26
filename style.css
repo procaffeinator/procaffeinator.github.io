@@ -1,80 +1,109 @@
 body {
-    font-family: 'Space Mono', sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgb(50, 50, 118);
+    background-color: #333;
+    color: #fff;
 }
 
 h1 {
     text-decoration: none;
     -webkit-text-fill-color: transparent;
-    -webkit-text-stroke: thin PaleTurquoise;
+    -webkit-text-stroke: thin #ddd;
     font-size: 42px;
 }
 
 h1:hover {
-    -webkit-text-fill-color: PaleTurquoise;
+    -webkit-text-fill-color: #ddd;
 }
 
 .container {
     width: 80%;
     margin: 20px auto;
-    background-color: midnightblue;
+    background-color: rgb(0, 0, 0);
     padding: 20px;
     border-radius: 12px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .center {
     text-align: center;
 }
 
-.label-container {
-    display: flex;
-    justify-content: space-around;
-    margin: 20px 0;
-}
 
 label {
     display: inline-block;
-    margin-top: 15px;
-    width: 30%;
+    margin-top: 10px;
+    /* width: 100%; */
     margin-right: 5px;
     margin-left: 5px;
+    margin-bottom: 10px;
     font-weight: 200;
-    color: PaleTurquoise;
-    /* Add space to the right of each label */
+    color: #ddd;
 }
 
+
+.label-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.label-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 0;
+}
+
+/* 
+.arrow-container {
+    display: block;
+    text-align: center;
+    margin: 20px auto;
+}
+
+.arrow {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 15px solid PaleTurquoise;
+    margin: 0 auto;
+} */
+
 select {
-    width: 60%;
-    padding: 6px;
+    width: 100%;
+    /* Increased width to 70% */
+    padding: 8px;
+    /* Adjusted padding for better spacing */
     margin: 8px 0;
-    border: 1px solid #ddd;
+    border: 1px solid #333;
+    /* Dark navy blue border color */
     border-radius: 4px;
     margin-right: 5px;
-    /* margin-left: 10px; */
-    /* Add margin to the right of each dropdown */
+    margin-bottom: 10px;
     appearance: none;
-    /* Remove default arrow */
-    background-color: #ffffffb5;
+    background-color: white;
     cursor: pointer;
     transition: background-color 0.3s ease, border-color 0.3s ease;
     font-size: 16px;
-    color: midnightblue;
+    color: black;
+    /* Dark navy blue text color */
 }
 
 /* Style the dropdown when hovered */
 select:hover {
-    border-color: #23647b;
+    border-color: #383838;
     /* Highlight border color on hover */
 }
 
 /* Style the dropdown when active (clicked) */
 select:focus {
-    border-color: #375779;
+    border-color: #383838;
     /* Highlight border color when active */
 }
 
@@ -86,21 +115,23 @@ select:focus {
 
 .generate-button {
     display: inline-block;
-    padding: 12px;
-    background-color: #3f3f3fb5;
-    color: paleturquoise;
+    padding: 14px;
+    /* Increased padding for better visual appearance */
+    background-color: #333;
+    /* Updated button color */
+    color: #fff;
+    /* Updated text color */
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-size: 18px;
+    /* Increased font size */
 }
-
 
 .generate-button:hover {
-    background-color: #807e7eb5;
+    background-color: #242424;
 }
-
-/* ... (your existing styles) */
 
 .result-container {
     display: none;
@@ -110,10 +141,10 @@ select:focus {
     text-align: center;
     padding: 20px;
     border-radius: 12px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: midnightblue;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    background-color: rgb(0, 0, 0);
     overflow: hidden;
-    color: paleturquoise;
+    color: white;
     width: 80%;
 }
 
@@ -153,14 +184,14 @@ select:focus {
 
 .loader {
     display: none;
-    border: 8px solid #3875b7;
-    border-top: 8px solid #9ac9da;
+    border: 8px solid #212121;
+    border-top: 8px solid #333;
     border-radius: 50%;
     width: 50px;
     height: 50px;
     animation: spin 1s linear infinite;
     position: absolute;
-    top: 50%;
+    top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -190,7 +221,7 @@ img {
     margin: 20px 10px;
     /* Center the image horizontally */
     border-radius: 12px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     opacity: 0;
     animation: fadeIn 2s ease-in-out forwards;
 }

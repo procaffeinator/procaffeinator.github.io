@@ -15,6 +15,12 @@ function populateOptions(category, options) {
     });
 }
 
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 async function generateIdea() {
     const loader = document.getElementById('loader');
     loader.style.display = 'block';
@@ -24,8 +30,10 @@ async function generateIdea() {
 
     try {
         const category1 = document.getElementById('category1').value;
-        const category2 = document.getElementById('category2').value;
-        const category3 = document.getElementById('category3').value;
+        // const category2 = document.getElementById('category2').value;
+        // const category3 = document.getElementById('category3').value;
+        let category2 = category2Options[getRandomInt(0, category2Options.length - 1)]
+        let category3 = category3Options[getRandomInt(0, category3Options.length - 1)]
 
         const requestBody = {
             contents: [{
@@ -124,6 +132,6 @@ function copyToClipboard(text) {
 // Populate options on page load
 window.onload = function () {
     populateOptions('category1', category1Options);
-    populateOptions('category2', category2Options);
-    populateOptions('category3', category3Options);
+    // populateOptions('category2', category2Options);
+    // populateOptions('category3', category3Options);
 };
